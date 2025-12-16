@@ -12,21 +12,18 @@ body{
   margin:auto;
   padding:20px;
 }
-
 .q{
   background:#fff;
   padding:15px;
   margin:15px 0;
   border-radius:8px;
 }
-
 .q label{
   display:block;
   margin:6px 0;
   font-size:16px;
   cursor:pointer;
 }
-
 button{
   padding:12px 30px;
   font-size:18px;
@@ -36,6 +33,11 @@ button{
   border-radius:6px;
   cursor:pointer;
 }
+#countdown{
+  font-size:20px;
+  font-weight:bold;
+  color: #d9534f;
+}
 </style>
 </head>
 
@@ -43,8 +45,13 @@ button{
 
 <h1 style="text-align:center;">Excel MCQ Test</h1>
 
-<input type="text" id="name" placeholder="Apna pura naam likho"
-style="width:100%;padding:10px;font-size:16px">
+<div id="startMessage" style="text-align:center; font-size:18px; margin-top:50px;">
+  Test 9:30 PM ke baad start hoga. <br>
+  <span id="countdown"></span>
+</div>
+
+<div id="testContent" style="display:none;">
+<input type="text" id="name" placeholder="Apna pura naam likho" style="width:100%;padding:10px;font-size:16px">
 
 <!-- Q1 -->
 <div class="q">
@@ -151,8 +158,7 @@ style="width:100%;padding:10px;font-size:16px">
 </center>
 
 <script>
-const WEB_APP_URL =
-"https://script.google.com/macros/s/AKfycbyhpotBZYrE-8VSQBv3RmZmQrqw6QFoZXT3EqF2Udo0ko8Tlif1F-lhlwBIQcyaof3P/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyhpotBZYrE-8VSQBv3RmZmQrqw6QFoZXT3EqF2Udo0ko8Tlif1F-lhlwBIQcyaof3P/exec";
 
 /* 🔒 browser lock */
 if(localStorage.getItem("testSubmitted")==="yes"){
@@ -197,6 +203,30 @@ function submitAnswers(){
   document.body.innerHTML =
   "<h2 style='color:green;text-align:center;margin-top:50px;'>✅ Test Successfully Submitted</h2>";
 }
+
+// Timer aur auto-start
+function checkTime() {
+  const now = new Date();
+  const startTime = new Date();
+  startTime.setHours(21,30,0,0); // 9:30 PM
+
+  const diff = startTime - now;
+
+  if(diff <= 0){
+    // Test start
+    document.getElementById("startMessage").style.display = "none";
+    document.getElementById("testContent").style.display = "block";
+  } else {
+    // Countdown show
+    const hrs = Math.floor(diff / (1000*60*60));
+    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs = Math.floor((diff % (1000*60)) / 1000);
+    document.getElementById("countdown").innerText = `Shuru hone me: ${hrs}h ${mins}m ${secs}s`;
+  }
+}
+
+// Har 1 second check
+setInterval(checkTime, 1000);
 </script>
 
 </body>
