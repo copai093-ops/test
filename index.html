@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Excel MCQ Test</title>
-
 <style>
 body{
   font-family: Arial;
@@ -17,6 +16,7 @@ body{
   padding:15px;
   margin:15px 0;
   border-radius:8px;
+  display:none;
 }
 .q label{
   display:block;
@@ -32,138 +32,97 @@ button{
   border:none;
   border-radius:6px;
   cursor:pointer;
+  margin-top:10px;
 }
 #countdown{
   font-size:20px;
   font-weight:bold;
   color: #d9534f;
+  text-align:right;
 }
 </style>
 </head>
-
 <body>
 
 <h1 style="text-align:center;">Excel MCQ Test</h1>
 
-<div id="startMessage" style="text-align:center; font-size:18px; margin-top:50px;">
-  Test 9:30 PM ke baad start hoga. <br>
-  <span id="countdown"></span>
+<div id="nameSection" style="text-align:center; margin-top:50px;">
+  <input type="text" id="name" placeholder="Apna pura naam likho" style="width:80%;padding:10px;font-size:16px">
+  <br>
+  <button onclick="startTest()">Next</button>
 </div>
 
-<div id="testContent" style="display:none;">
-<input type="text" id="name" placeholder="Apna pura naam likho" style="width:100%;padding:10px;font-size:16px">
+<div id="countdown"></div>
+<div id="testContent">
+  <!-- Questions -->
+  <div class="q" id="q1">
+    <b>Q1.</b> Excel file ka default extension?
+    <label><input type="radio" name="q1" value="A"> .xlsx</label>
+    <label><input type="radio" name="q1" value="B"> .xls</label>
+    <label><input type="radio" name="q1" value="C"> .csv</label>
+    <label><input type="radio" name="q1" value="D"> .xlsm</label>
+    <label><input type="radio" name="q1" value="NA" checked> Not Attended</label>
+  </div>
 
-<!-- Q1 -->
-<div class="q">
-<b>Q1.</b> Excel file ka default extension?
-<label><input type="radio" name="q1" value="A"> .xlsx</label>
-<label><input type="radio" name="q1" value="B"> .xls</label>
-<label><input type="radio" name="q1" value="C"> .csv</label>
-<label><input type="radio" name="q1" value="D"> .xlsm</label>
-<label><input type="radio" name="q1" value="NA" checked> Not Attended</label>
+  <div class="q" id="q2">
+    <b>Q2.</b> Cell address ka example?
+    <label><input type="radio" name="q2" value="A"> A1</label>
+    <label><input type="radio" name="q2" value="B"> $A$1</label>
+    <label><input type="radio" name="q2" value="C"> Both A & B</label>
+    <label><input type="radio" name="q2" value="D"> None</label>
+    <label><input type="radio" name="q2" value="NA" checked> Not Attended</label>
+  </div>
+
+  <!-- Add more questions as needed with ids q3, q4, ... -->
+
+  <button id="nextBtn" onclick="nextQuestion()">Next</button>
 </div>
-
-<!-- Q2 -->
-<div class="q">
-<b>Q2.</b> Cell address ka example?
-<label><input type="radio" name="q2" value="A"> A1</label>
-<label><input type="radio" name="q2" value="B"> $A$1</label>
-<label><input type="radio" name="q2" value="C"> Both A & B</label>
-<label><input type="radio" name="q2" value="D"> None</label>
-<label><input type="radio" name="q2" value="NA" checked> Not Attended</label>
-</div>
-
-<!-- Q3 -->
-<div class="q">
-<b>Q3.</b> SUM function ka use?
-<label><input type="radio" name="q3" value="A"> Numbers add karne ke liye</label>
-<label><input type="radio" name="q3" value="B"> Text join karne ke liye</label>
-<label><input type="radio" name="q3" value="C"> Average nikalne ke liye</label>
-<label><input type="radio" name="q3" value="D"> None</label>
-<label><input type="radio" name="q3" value="NA" checked> Not Attended</label>
-</div>
-
-<!-- Q4 -->
-<div class="q">
-<b>Q4.</b> VLOOKUP ka full form?
-<label><input type="radio" name="q4" value="A"> Vertical Lookup</label>
-<label><input type="radio" name="q4" value="B"> Value Lookup</label>
-<label><input type="radio" name="q4" value="C"> Visual Lookup</label>
-<label><input type="radio" name="q4" value="D"> None</label>
-<label><input type="radio" name="q4" value="NA" checked> Not Attended</label>
-</div>
-
-<!-- Q5 -->
-<div class="q">
-<b>Q5.</b> Pivot Table banane ka shortcut?
-<label><input type="radio" name="q5" value="A"> Alt + N + V</label>
-<label><input type="radio" name="q5" value="B"> Ctrl + P</label>
-<label><input type="radio" name="q5" value="C"> Alt + D + P</label>
-<label><input type="radio" name="q5" value="D"> None</label>
-<label><input type="radio" name="q5" value="NA" checked> Not Attended</label>
-</div>
-
-<!-- Q6 -->
-<div class="q">
-<b>Q6.</b> Conditional Formatting kahan milta hai?
-<label><input type="radio" name="q6" value="A"> Home Tab</label>
-<label><input type="radio" name="q6" value="B"> Insert Tab</label>
-<label><input type="radio" name="q6" value="C"> Data Tab</label>
-<label><input type="radio" name="q6" value="D"> View Tab</label>
-<label><input type="radio" name="q6" value="NA" checked> Not Attended</label>
-</div>
-
-<!-- Q7 -->
-<div class="q">
-<b>Q7.</b> Chart insert karne ka shortcut?
-<label><input type="radio" name="q7" value="A"> F11</label>
-<label><input type="radio" name="q7" value="B"> F10</label>
-<label><input type="radio" name="q7" value="C"> Alt + F1</label>
-<label><input type="radio" name="q7" value="D"> Both A & C</label>
-<label><input type="radio" name="q7" value="NA" checked> Not Attended</label>
-</div>
-
-<!-- Q8 -->
-<div class="q">
-<b>Q8.</b> Freeze Panes ka use?
-<label><input type="radio" name="q8" value="A"> Rows/Columns fix karne ke liye</label>
-<label><input type="radio" name="q8" value="B"> Data sort karne ke liye</label>
-<label><input type="radio" name="q8" value="C"> Filter lagane ke liye</label>
-<label><input type="radio" name="q8" value="D"> None</label>
-<label><input type="radio" name="q8" value="NA" checked> Not Attended</label>
-</div>
-
-<!-- Q9 -->
-<div class="q">
-<b>Q9.</b> COUNT function kya count karta hai?
-<label><input type="radio" name="q9" value="A"> Numbers</label>
-<label><input type="radio" name="q9" value="B"> Text</label>
-<label><input type="radio" name="q9" value="C"> Sab</label>
-<label><input type="radio" name="q9" value="D"> Blank</label>
-<label><input type="radio" name="q9" value="NA" checked> Not Attended</label>
-</div>
-
-<!-- Q10 -->
-<div class="q">
-<b>Q10.</b> Excel mein maximum columns?
-<label><input type="radio" name="q10" value="A"> 16384</label>
-<label><input type="radio" name="q10" value="B"> 1024</label>
-<label><input type="radio" name="q10" value="C"> 256</label>
-<label><input type="radio" name="q10" value="D"> 65536</label>
-<label><input type="radio" name="q10" value="NA" checked> Not Attended</label>
-</div>
-
-<center>
-<button onclick="submitAnswers()">Submit Test</button>
-</center>
 
 <script>
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyhpotBZYrE-8VSQBv3RmZmQrqw6QFoZXT3EqF2Udo0ko8Tlif1F-lhlwBIQcyaof3P/exec";
 
-/* 🔒 browser lock */
-if(localStorage.getItem("testSubmitted")==="yes"){
-  document.body.innerHTML =
-  "<h2 style='color:red;text-align:center;margin-top:50px;'>❌ Aap ye test pehle hi submit kar chuke ho</h2>";
+let currentQ = 0;
+let questions = document.querySelectorAll(".q");
+let timer;
+let timeLeft = 30*60; // 30 min in seconds
+
+function startTest() {
+  const name = document.getElementById("name").value.trim();
+  if(!name){
+    alert("Pehle naam likho");
+    return;
+  }
+  document.getElementById("nameSection").style.display = "none";
+  document.getElementById("testContent").style.display = "block";
+  showQuestion(0);
+  startTimer();
+}
+
+function showQuestion(index){
+  questions.forEach(q => q.style.display="none");
+  if(index < questions.length){
+    questions[index].style.display="block";
+  } else {
+    submitAnswers();
+  }
+}
+
+function nextQuestion(){
+  currentQ++;
+  showQuestion(currentQ);
+}
+
+function startTimer(){
+  timer = setInterval(() => {
+    const mins = Math.floor(timeLeft/60);
+    const secs = timeLeft % 60;
+    document.getElementById("countdown").innerText = `Time left: ${mins}m ${secs}s`;
+    if(timeLeft <= 0){
+      clearInterval(timer);
+      submitAnswers();
+    }
+    timeLeft--;
+  },1000);
 }
 
 function getAns(q){
@@ -172,24 +131,12 @@ function getAns(q){
 
 function submitAnswers(){
   const name=document.getElementById("name").value.trim();
-  if(!name){
-    alert("Pehle naam likho");
-    return;
-  }
-
-  const data={
-    name:name,
-    q1:getAns("q1"),
-    q2:getAns("q2"),
-    q3:getAns("q3"),
-    q4:getAns("q4"),
-    q5:getAns("q5"),
-    q6:getAns("q6"),
-    q7:getAns("q7"),
-    q8:getAns("q8"),
-    q9:getAns("q9"),
-    q10:getAns("q10")
-  };
+  const data = {};
+  questions.forEach((q,i)=>{
+    const qName = `q${i+1}`;
+    data[qName] = getAns(qName);
+  });
+  data.name = name;
 
   fetch(WEB_APP_URL,{
     method:"POST",
@@ -198,36 +145,9 @@ function submitAnswers(){
     mode:"no-cors"
   });
 
-  localStorage.setItem("testSubmitted","yes");
-
   document.body.innerHTML =
-  "<h2 style='color:green;text-align:center;margin-top:50px;'>✅ Test Successfully Submitted</h2>";
+    "<h2 style='color:green;text-align:center;margin-top:50px;'>✅ Test Successfully Submitted</h2>";
 }
-
-// Timer aur auto-start
-function checkTime() {
-  const now = new Date();
-  const startTime = new Date();
-  startTime.setHours(21,30,0,0); // 9:30 PM
-
-  const diff = startTime - now;
-
-  if(diff <= 0){
-    // Test start
-    document.getElementById("startMessage").style.display = "none";
-    document.getElementById("testContent").style.display = "block";
-  } else {
-    // Countdown show
-    const hrs = Math.floor(diff / (1000*60*60));
-    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
-    const secs = Math.floor((diff % (1000*60)) / 1000);
-    document.getElementById("countdown").innerText = `Shuru hone me: ${hrs}h ${mins}m ${secs}s`;
-  }
-}
-
-// Har 1 second check
-setInterval(checkTime, 1000);
 </script>
-
 </body>
 </html>
