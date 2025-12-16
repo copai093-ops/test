@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel MCQ Test - Class</title>
+  <style>
+    body {font-family: Arial; background: #e8f4f8; padding: 20px; max-width: 900px; margin: auto;}
+    h1 {text-align: center; color: #2c3e50;}
+    input[type="text"] {width: 100%; padding: 12px; font-size: 18px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ccc;}
+    .q {background: white; padding: 20px; margin: 15px 0; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);}
+    label {display: block; margin: 10px 0; font-size: 17px;}
+    button {background: #27ae60; color: white; padding: 15px 40px; font-size: 20px; border: none; border-radius: 8px; cursor: pointer; margin-top: 20px;}
+    button:hover {background: #219653;}
+  </style>
+</head>
+<body>
+  <h1>Excel MCQ Test</h1>
+  <input type="text" id="name" placeholder="Apna pura naam likho" required>
+  
+  <div class="q"><b>Q1.</b> Excel file ka default extension kya hai?<br>
+    <label><input type="radio" name="q1" value="A"> .xlsx</label>
+    <label><input type="radio" name="q1" value="B"> .xls</label>
+    <label><input type="radio" name="q1" value="C"> .csv</label>
+    <label><input type="radio" name="q1" value="D"> .xlsm</label>
+  </div>
+
+  <div class="q"><b>Q2.</b> Excel mein cell address ka example?<br>
+    <label><input type="radio" name="q2" value="A"> A1</label>
+    <label><input type="radio" name="q2" value="B"> $A$1</label>
+    <label><input type="radio" name="q2" value="C"> Both A & B</label>
+    <label><input type="radio" name="q2" value="D"> None</label>
+  </div>
+
+  <div class="q"><b>Q3.</b> SUM function ka use?<br>
+    <label><input type="radio" name="q3" value="A"> Numbers add karne ke liye</label>
+    <label><input type="radio" name="q3" value="B"> Text join karne ke liye</label>
+    <label><input type="radio" name="q3" value="C"> Average nikalne ke liye</label>
+    <label><input type="radio" name="q3" value="D"> None</label>
+  </div>
+
+  <div class="q"><b>Q4.</b> VLOOKUP ka full form?<br>
+    <label><input type="radio" name="q4" value="A"> Vertical Lookup</label>
+    <label><input type="radio" name="q4" value="B"> Value Lookup</label>
+    <label><input type="radio" name="q4" value="C"> Visual Lookup</label>
+    <label><input type="radio" name="q4" value="D"> None</label>
+  </div>
+
+  <div class="q"><b>Q5.</b> Pivot Table banane ke liye shortcut?<br>
+    <label><input type="radio" name="q5" value="A"> Alt + N + V</label>
+    <label><input type="radio" name="q5" value="B"> Ctrl + P</label>
+    <label><input type="radio" name="q5" value="C"> Alt + D + P</label>
+    <label><input type="radio" name="q5" value="D"> None</label>
+  </div>
+
+  <div class="q"><b>Q6.</b> Conditional Formatting kahan milta hai?<br>
+    <label><input type="radio" name="q6" value="A"> Home Tab</label>
+    <label><input type="radio" name="q6" value="B"> Insert Tab</label>
+    <label><input type="radio" name="q6" value="C"> Data Tab</label>
+    <label><input type="radio" name="q6" value="D"> View Tab</label>
+  </div>
+
+  <div class="q"><b>Q7.</b> Chart insert karne ka shortcut?<br>
+    <label><input type="radio" name="q7" value="A"> F11</label>
+    <label><input type="radio" name="q7" value="B"> F10</label>
+    <label><input type="radio" name="q7" value="C"> Alt + F1</label>
+    <label><input type="radio" name="q7" value="D"> Both A & C</label>
+  </div>
+
+  <div class="q"><b>Q8.</b> Freeze Panes ka use?<br>
+    <label><input type="radio" name="q8" value="A"> Rows/Columns fix karne ke liye</label>
+    <label><input type="radio" name="q8" value="B"> Data sort karne ke liye</label>
+    <label><input type="radio" name="q8" value="C"> Filter lagane ke liye</label>
+    <label><input type="radio" name="q8" value="D"> None</label>
+  </div>
+
+  <div class="q"><b>Q9.</b> COUNT function kitne cells count karta hai?<br>
+    <label><input type="radio" name="q9" value="A"> Numbers wale</label>
+    <label><input type="radio" name="q9" value="B"> Text wale</label>
+    <label><input type="radio" name="q9" value="C"> Sab</label>
+    <label><input type="radio" name="q9" value="D"> Blank</label>
+  </div>
+
+  <div class="q"><b>Q10.</b> Excel mein maximum columns kitne hote hain?<br>
+    <label><input type="radio" name="q10" value="A"> 16384</label>
+    <label><input type="radio" name="q10" value="B"> 1024</label>
+    <label><input type="radio" name="q10" value="C"> 256</label>
+    <label><input type="radio" name="q10" value="D"> 65536</label>
+  </div>
+
+  <center><button onclick="submitAnswers()">Submit Test</button></center>
+
+  <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyhpotBZYrE-8VSQBv3RmZmQrqw6QFoZXT3EqF2Udo0ko8Tlif1F-lhlwBIQcyaof3P/exec"; 
+
+    function submitAnswers() {
+      const name = document.getElementById("name").value.trim();
+      if (!name) { alert("Pehle naam likho bhai!"); return; }
+
+      const answers = {
+        name: name,
+        q1: document.querySelector('input[name="q1"]:checked')?.value || "",
+        q2: document.querySelector('input[name="q2"]:checked')?.value || "",
+        q3: document.querySelector('input[name="q3"]:checked')?.value || "",
+        q4: document.querySelector('input[name="q4"]:checked')?.value || "",
+        q5: document.querySelector('input[name="q5"]:checked')?.value || "",
+        q6: document.querySelector('input[name="q6"]:checked')?.value || "",
+        q7: document.querySelector('input[name="q7"]:checked')?.value || "",
+        q8: document.querySelector('input[name="q8"]:checked')?.value || "",
+        q9: document.querySelector('input[name="q9"]:checked')?.value || "",
+        q10: document.querySelector('input[name="q10"]:checked')?.value || ""
+      };
+
+      fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify(answers),
+        headers: {"Content-Type": "text/plain;charset=utf-8"},
+        mode: "no-cors"
+      })
+      .then(() => alert("Test submit ho gaya! Data sheet mein aa gaya"))
+      .catch(() => alert("Submit ho gaya (no-cors mode)"));
+    }
+  </script>
+</body>
+</html>
