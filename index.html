@@ -49,11 +49,12 @@ button{
 <div id="nameSection" style="text-align:center; margin-top:50px;">
   <input type="text" id="name" placeholder="Apna pura naam likho" style="width:80%;padding:10px;font-size:16px">
   <br>
-  <button onclick="startTest()">Next</button>
+  <button id="startBtn" onclick="startTest()">Next</button>
 </div>
 
 <div id="countdown"></div>
-<div id="testContent">
+
+<div id="testContent" style="display:none;">
   <!-- Questions -->
   <div class="q" id="q1">
     <b>Q1.</b> Excel file ka default extension?
@@ -73,7 +74,25 @@ button{
     <label><input type="radio" name="q2" value="NA" checked> Not Attended</label>
   </div>
 
-  <!-- Add more questions as needed with ids q3, q4, ... -->
+  <div class="q" id="q3">
+    <b>Q3.</b> SUM function ka use?
+    <label><input type="radio" name="q3" value="A"> Numbers add karne ke liye</label>
+    <label><input type="radio" name="q3" value="B"> Text join karne ke liye</label>
+    <label><input type="radio" name="q3" value="C"> Average nikalne ke liye</label>
+    <label><input type="radio" name="q3" value="D"> None</label>
+    <label><input type="radio" name="q3" value="NA" checked> Not Attended</label>
+  </div>
+
+  <div class="q" id="q4">
+    <b>Q4.</b> VLOOKUP ka full form?
+    <label><input type="radio" name="q4" value="A"> Vertical Lookup</label>
+    <label><input type="radio" name="q4" value="B"> Value Lookup</label>
+    <label><input type="radio" name="q4" value="C"> Visual Lookup</label>
+    <label><input type="radio" name="q4" value="D"> None</label>
+    <label><input type="radio" name="q4" value="NA" checked> Not Attended</label>
+  </div>
+
+  <!-- Add more questions here as needed -->
 
   <button id="nextBtn" onclick="nextQuestion()">Next</button>
 </div>
@@ -84,7 +103,13 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyhpotBZYrE-8VSQBv3
 let currentQ = 0;
 let questions = document.querySelectorAll(".q");
 let timer;
-let timeLeft = 30*60; // 30 min in seconds
+let timeLeft = 30*60; // 30 minutes in seconds
+
+// 🔒 Check if test already submitted
+if(localStorage.getItem("testSubmitted")==="yes"){
+  document.body.innerHTML =
+    "<h2 style='color:red;text-align:center;margin-top:50px;'>❌ Aap ye test pehle hi submit kar chuke ho</h2>";
+}
 
 function startTest() {
   const name = document.getElementById("name").value.trim();
@@ -92,8 +117,11 @@ function startTest() {
     alert("Pehle naam likho");
     return;
   }
+  // Hide name input
   document.getElementById("nameSection").style.display = "none";
+  // Show test content
   document.getElementById("testContent").style.display = "block";
+  document.getElementById("nextBtn").style.display = "inline-block";
   showQuestion(0);
   startTimer();
 }
@@ -102,14 +130,24 @@ function showQuestion(index){
   questions.forEach(q => q.style.display="none");
   if(index < questions.length){
     questions[index].style.display="block";
+    // Last question: change button to Submit
+    if(index === questions.length - 1){
+      document.getElementById("nextBtn").innerText = "Submit";
+    } else {
+      document.getElementById("nextBtn").innerText = "Next";
+    }
   } else {
     submitAnswers();
   }
 }
 
 function nextQuestion(){
-  currentQ++;
-  showQuestion(currentQ);
+  if(currentQ === questions.length - 1){
+    submitAnswers();
+  } else {
+    currentQ++;
+    showQuestion(currentQ);
+  }
 }
 
 function startTimer(){
@@ -130,13 +168,12 @@ function getAns(q){
 }
 
 function submitAnswers(){
+  clearInterval(timer); // stop timer
   const name=document.getElementById("name").value.trim();
-  const data = {};
+  const data = {name:name};
   questions.forEach((q,i)=>{
-    const qName = `q${i+1}`;
-    data[qName] = getAns(qName);
+    data[`q${i+1}`] = getAns(`q${i+1}`);
   });
-  data.name = name;
 
   fetch(WEB_APP_URL,{
     method:"POST",
@@ -144,6 +181,8 @@ function submitAnswers(){
     headers:{"Content-Type":"text/plain;charset=utf-8"},
     mode:"no-cors"
   });
+
+  localStorage.setItem("testSubmitted","yes");
 
   document.body.innerHTML =
     "<h2 style='color:green;text-align:center;margin-top:50px;'>✅ Test Successfully Submitted</h2>";
