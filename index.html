@@ -1,68 +1,42 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Excel MCQ Test</title>
-
-  <style>
-    body {
-      font-family: Arial;
-      background: #e8f4f8;
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    h1 {
-      text-align: center;
-      color: #2c3e50;
-    }
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      font-size: 18px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    .q {
-      background: white;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    }
-    label {
-      display: block;
-      margin: 8px 0;
-      font-size: 17px;
-    }
-    button {
-      background: #27ae60;
-      color: white;
-      padding: 15px 40px;
-      font-size: 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-    button:hover {
-      background: #219653;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Excel MCQ Test</title>
+<style>
+body{
+  font-family: Arial;
+  background:#e8f4f8;
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+.q{
+  background:#fff;
+  padding:15px;
+  margin:15px 0;
+  border-radius:8px;
+}
+button{
+  padding:12px 30px;
+  font-size:18px;
+  background:green;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
-<h1>Excel MCQ Test</h1>
+<h1 style="text-align:center;">Excel MCQ Test</h1>
 
-<input type="text" id="name" placeholder="Apna pura naam likho" required>
-
-<!-- ================= QUESTIONS ================= -->
+<input type="text" id="name" placeholder="Apna pura naam likho" style="width:100%;padding:10px;font-size:16px">
 
 <div class="q">
-<b>Q1.</b> Excel file ka default extension kya hai?
+<b>Q1.</b> Excel file ka default extension?
 <label><input type="radio" name="q1" value="A"> .xlsx</label>
 <label><input type="radio" name="q1" value="B"> .xls</label>
 <label><input type="radio" name="q1" value="C"> .csv</label>
@@ -71,14 +45,13 @@
 </div>
 
 <div class="q">
-<b>Q2.</b> Excel mein cell address ka example?
+<b>Q2.</b> Cell address ka example?
 <label><input type="radio" name="q2" value="A"> A1</label>
 <label><input type="radio" name="q2" value="B"> $A$1</label>
 <label><input type="radio" name="q2" value="C"> Both A & B</label>
 <label><input type="radio" name="q2" value="D"> None</label>
 <label><input type="radio" name="q2" value="NA"> Not Attended</label>
 </div>
-
 <div class="q">
 <b>Q3.</b> SUM function ka use?
 <label><input type="radio" name="q3" value="A"> Numbers add karne ke liye</label>
@@ -155,46 +128,60 @@
 <button onclick="submitAnswers()">Submit Test</button>
 </center>
 
-<!-- ================= SCRIPT ================= -->
-
 <script>
-  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyhpotBZYrE-8VSQBv3RmZmQrqw6QFoZXT3EqF2Udo0ko8Tlif1F-lhlwBIQcyaof3P/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyhpotBZYrE-8VSQBv3RmZmQrqw6QFoZXT3EqF2Udo0ko8Tlif1F-lhlwBIQcyaof3P/exec";
 
-  function getAnswer(q) {
-    return document.querySelector(`input[name="${q}"]:checked`)?.value || "NA";
+// 🔒 Browser level lock
+if (localStorage.getItem("testSubmitted") === "yes") {
+  document.body.innerHTML =
+    "<h2 style='color:red;text-align:center;'>❌ Aap ye test pehle hi submit kar chuke ho</h2>";
+}
+
+function getAns(q){
+  return document.querySelector(`input[name="${q}"]:checked`)?.value || "NA";
+}
+
+function submitAnswers(){
+  const name = document.getElementById("name").value.trim();
+  if(!name){
+    alert("Pehle naam likho");
+    return;
   }
 
-  function submitAnswers() {
-    const name = document.getElementById("name").value.trim();
-    if (!name) {
-      alert("Pehle naam likho!");
-      return;
-    }
+  const data = {
+    name:name,
+    q1:getAns("q1"),
+    q2:getAns("q2"),
+    q3:getAns("q3"),
+    q4:getAns("q4"),
+    q5:getAns("q5"),
+    q6:getAns("q6"),
+    q7:getAns("q7"),
+    q8:getAns("q8"),
+    q9:getAns("q9"),
+    q10:getAns("q10")
+  };
 
-    const data = {
-      name: name,
-      q1: getAnswer("q1"),
-      q2: getAnswer("q2"),
-      q3: getAnswer("q3"),
-      q4: getAnswer("q4"),
-      q5: getAnswer("q5"),
-      q6: getAnswer("q6"),
-      q7: getAnswer("q7"),
-      q8: getAnswer("q8"),
-      q9: getAnswer("q9"),
-      q10: getAnswer("q10")
-    };
+  fetch(WEB_APP_URL,{
+    method:"POST",
+    body:JSON.stringify(data),
+    headers:{"Content-Type":"text/plain;charset=utf-8"},
+    mode:"no-cors"
+  });
 
-    fetch(WEB_APP_URL, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {"Content-Type": "text/plain;charset=utf-8"},
-      mode: "no-cors"
-    });
+  // 🔒 lock browser
+  localStorage.setItem("testSubmitted","yes");
 
-    alert("Test submit ho gaya!");
-  }
+  alert("Test submit ho gaya");
+  location.reload();
+}
 </script>
 
 </body>
 </html>
+
+
+
+
+
+
