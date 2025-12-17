@@ -2,7 +2,8 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<title>Excel MCQ Test</title>
+<title>Math & Reasoning MCQ Test</title>
+
 <style>
 body{
   font-family: Arial;
@@ -38,244 +39,227 @@ button{
 #countdown{
   font-size:20px;
   font-weight:bold;
-  color: #d9534f;
+  color:#d9534f;
   text-align:right;
 }
 </style>
 </head>
+
 <body>
 
-<h1 style="text-align:center;">Math & Resoning MCQ Test By Jhunjhar Singh</h1>
+<h1 style="text-align:center;">Math & Reasoning MCQ Test</h1>
 
-<!-- Name Section -->
-<div id="nameSection" style="text-align:center; margin-top:50px;">
-  <input type="text" id="name" placeholder="Apna pura naam likho" style="width:80%;padding:10px;font-size:16px">
-  <br>
-  <button id="startBtn" onclick="startTest()">Next</button>
+<!-- NAME -->
+<div id="nameSection" style="text-align:center;margin-top:40px;">
+  <input type="text" id="name" placeholder="Apna pura naam likho"
+   style="width:80%;padding:10px;font-size:16px">
+  <br><br>
+  <button onclick="startTest()">Next</button>
 </div>
 
 <div id="countdown"></div>
 
-<!-- Test Content -->
+<!-- TEST -->
 <div id="testContent" style="display:none;">
-  <!-- Q1 -->
- <div class="q" id="q1">
-  <b>Q1.</b> √16 का मान क्या है?<br>
-  <label><input type="radio" name="q1"> 2</label>
-  <label><input type="radio" name="q1"> 3</label>
-  <label><input type="radio" name="q1"> 4</label>
-  <label><input type="radio" name="q1"> 5</label>
+
+<!-- Q1 -->
+<div class="q">
+<b>Q1.</b> √16 का मान क्या है?<br>
+<label><input type="radio" name="q1" value="2"> 2</label>
+<label><input type="radio" name="q1" value="3"> 3</label>
+<label><input type="radio" name="q1" value="4"> 4</label>
+<label><input type="radio" name="q1" value="5"> 5</label>
 </div>
 
-<div class="q" id="q2">
-  <b>Q2.</b> √25 = ?<br>
-  <label><input type="radio" name="q2"> 3</label>
-  <label><input type="radio" name="q2"> 4</label>
-  <label><input type="radio" name="q2"> 5</label>
-  <label><input type="radio" name="q2"> 6</label>
+<!-- Q2 -->
+<div class="q">
+<b>Q2.</b> √25 = ?<br>
+<label><input type="radio" name="q2" value="3"> 3</label>
+<label><input type="radio" name="q2" value="4"> 4</label>
+<label><input type="radio" name="q2" value="5"> 5</label>
+<label><input type="radio" name="q2" value="6"> 6</label>
 </div>
 
-<div class="q" id="q3">
-  <b>Q3.</b> √9 का मान है?<br>
-  <label><input type="radio" name="q3"> 1</label>
-  <label><input type="radio" name="q3"> 2</label>
-  <label><input type="radio" name="q3"> 3</label>
-  <label><input type="radio" name="q3"> 4</label>
+<!-- Q3 -->
+<div class="q">
+<b>Q3.</b> √9 का मान है?<br>
+<label><input type="radio" name="q3" value="1"> 1</label>
+<label><input type="radio" name="q3" value="2"> 2</label>
+<label><input type="radio" name="q3" value="3"> 3</label>
+<label><input type="radio" name="q3" value="4"> 4</label>
 </div>
 
-<div class="q" id="q4">
-  <b>Q4.</b> √4 = ?<br>
-  <label><input type="radio" name="q4"> 1</label>
-  <label><input type="radio" name="q4"> 2</label>
-  <label><input type="radio" name="q4"> 3</label>
-  <label><input type="radio" name="q4"> 4</label>
+<!-- Q4 -->
+<div class="q">
+<b>Q4.</b> √4 = ?<br>
+<label><input type="radio" name="q4" value="1"> 1</label>
+<label><input type="radio" name="q4" value="2"> 2</label>
+<label><input type="radio" name="q4" value="3"> 3</label>
+<label><input type="radio" name="q4" value="4"> 4</label>
 </div>
 
-<div class="q" id="q5">
-  <b>Q5.</b> √1 का मान है?<br>
-  <label><input type="radio" name="q5"> 0</label>
-  <label><input type="radio" name="q5"> 1</label>
-  <label><input type="radio" name="q5"> 2</label>
-  <label><input type="radio" name="q5"> 3</label>
+<!-- Q5 -->
+<div class="q">
+<b>Q5.</b> √1 का मान है?<br>
+<label><input type="radio" name="q5" value="0"> 0</label>
+<label><input type="radio" name="q5" value="1"> 1</label>
+<label><input type="radio" name="q5" value="2"> 2</label>
+<label><input type="radio" name="q5" value="3"> 3</label>
 </div>
 
-<div class="q" id="q6">
-  <b>Q6.</b> √36 = ?<br>
-  <label><input type="radio" name="q6"> 5</label>
-  <label><input type="radio" name="q6"> 6</label>
-  <label><input type="radio" name="q6"> 7</label>
-  <label><input type="radio" name="q6"> 8</label>
+<!-- Q6 -->
+<div class="q">
+<b>Q6.</b> √36 = ?<br>
+<label><input type="radio" name="q6" value="5"> 5</label>
+<label><input type="radio" name="q6" value="6"> 6</label>
+<label><input type="radio" name="q6" value="7"> 7</label>
+<label><input type="radio" name="q6" value="8"> 8</label>
 </div>
 
-<div class="q" id="q7">
-  <b>Q7.</b> √49 का मान क्या है?<br>
-  <label><input type="radio" name="q7"> 6</label>
-  <label><input type="radio" name="q7"> 7</label>
-  <label><input type="radio" name="q7"> 8</label>
-  <label><input type="radio" name="q7"> 9</label>
+<!-- Q7 -->
+<div class="q">
+<b>Q7.</b> √49 का मान क्या है?<br>
+<label><input type="radio" name="q7" value="6"> 6</label>
+<label><input type="radio" name="q7" value="7"> 7</label>
+<label><input type="radio" name="q7" value="8"> 8</label>
+<label><input type="radio" name="q7" value="9"> 9</label>
 </div>
 
-<div class="q" id="q8">
-  <b>Q8.</b> √64 = ?<br>
-  <label><input type="radio" name="q8"> 6</label>
-  <label><input type="radio" name="q8"> 7</label>
-  <label><input type="radio" name="q8"> 8</label>
-  <label><input type="radio" name="q8"> 9</label>
+<!-- Q8 -->
+<div class="q">
+<b>Q8.</b> √64 = ?<br>
+<label><input type="radio" name="q8" value="6"> 6</label>
+<label><input type="radio" name="q8" value="7"> 7</label>
+<label><input type="radio" name="q8" value="8"> 8</label>
+<label><input type="radio" name="q8" value="9"> 9</label>
 </div>
 
-<div class="q" id="q9">
-  <b>Q9.</b> √81 का मान है?<br>
-  <label><input type="radio" name="q9"> 8</label>
-  <label><input type="radio" name="q9"> 9</label>
-  <label><input type="radio" name="q9"> 10</label>
-  <label><input type="radio" name="q9"> 11</label>
+<!-- Q9 -->
+<div class="q">
+<b>Q9.</b> √81 का मान है?<br>
+<label><input type="radio" name="q9" value="8"> 8</label>
+<label><input type="radio" name="q9" value="9"> 9</label>
+<label><input type="radio" name="q9" value="10"> 10</label>
+<label><input type="radio" name="q9" value="11"> 11</label>
 </div>
 
-<div class="q" id="q10">
-  <b>Q10.</b> √100 = ?<br>
-  <label><input type="radio" name="q10"> 8</label>
-  <label><input type="radio" name="q10"> 9</label>
-  <label><input type="radio" name="q10"> 10</label>
-  <label><input type="radio" name="q10"> 11</label>
-</div>
-<div class="q" id="q11">
-  <b>Q11.</b> A, B का भाई है। B, C की माँ है। A का C से क्या संबंध है?<br>
-  <label><input type="radio" name="q11"> पिता</label>
-  <label><input type="radio" name="q11"> मामा</label>
-  <label><input type="radio" name="q11"> चाचा</label>
-  <label><input type="radio" name="q11"> भाई</label>
+<!-- Q10 -->
+<div class="q">
+<b>Q10.</b> √100 = ?<br>
+<label><input type="radio" name="q10" value="8"> 8</label>
+<label><input type="radio" name="q10" value="9"> 9</label>
+<label><input type="radio" name="q10" value="10"> 10</label>
+<label><input type="radio" name="q10" value="11"> 11</label>
 </div>
 
-<div class="q" id="q12">
-  <b>Q12.</b> 2, 4, 8, 16, ?<br>
-  <label><input type="radio" name="q12"> 18</label>
-  <label><input type="radio" name="q12"> 24</label>
-  <label><input type="radio" name="q12"> 32</label>
-  <label><input type="radio" name="q12"> 64</label>
+<!-- Q11 -->
+<div class="q">
+<b>Q11.</b> A, B का भाई है। B, C की माँ है। A का C से क्या संबंध है?<br>
+<label><input type="radio" name="q11" value="पिता"> पिता</label>
+<label><input type="radio" name="q11" value="मामा"> मामा</label>
+<label><input type="radio" name="q11" value="चाचा"> चाचा</label>
+<label><input type="radio" name="q11" value="भाई"> भाई</label>
 </div>
 
-<div class="q" id="q13">
-  <b>Q13.</b> कल से एक दिन पहले कौन सा दिन था, अगर आज शुक्रवार है?<br>
-  <label><input type="radio" name="q13"> बुधवार</label>
-  <label><input type="radio" name="q13"> मंगलवार</label>
-  <label><input type="radio" name="q13"> गुरुवार</label>
-  <label><input type="radio" name="q13"> सोमवार</label>
+<!-- Q12 -->
+<div class="q">
+<b>Q12.</b> 2, 4, 8, 16, ?<br>
+<label><input type="radio" name="q12" value="18"> 18</label>
+<label><input type="radio" name="q12" value="24"> 24</label>
+<label><input type="radio" name="q12" value="32"> 32</label>
+<label><input type="radio" name="q12" value="64"> 64</label>
 </div>
 
-<div class="q" id="q14">
-  <b>Q14.</b> यदि CAT = DBU, तो DOG = ?<br>
-  <label><input type="radio" name="q14"> EPH</label>
-  <label><input type="radio" name="q14"> EOH</label>
-  <label><input type="radio" name="q14"> FPH</label>
-  <label><input type="radio" name="q14"> DPG</label>
+<!-- Q13 -->
+<div class="q">
+<b>Q13.</b> कल से एक दिन पहले कौन सा दिन था, अगर आज शुक्रवार है?<br>
+<label><input type="radio" name="q13" value="बुधवार"> बुधवार</label>
+<label><input type="radio" name="q13" value="मंगलवार"> मंगलवार</label>
+<label><input type="radio" name="q13" value="गुरुवार"> गुरुवार</label>
+<label><input type="radio" name="q13" value="सोमवार"> सोमवार</label>
 </div>
 
-<div class="q" id="q15">
-  <b>Q15.</b> कौन सा अलग है?<br>
-  <label><input type="radio" name="q15"> सेब</label>
-  <label><input type="radio" name="q15"> आम</label>
-  <label><input type="radio" name="q15"> केला</label>
-  <label><input type="radio" name="q15"> आलू</label>
+<!-- Q14 -->
+<div class="q">
+<b>Q14.</b> यदि CAT = DBU, तो DOG = ?<br>
+<label><input type="radio" name="q14" value="EPH"> EPH</label>
+<label><input type="radio" name="q14" value="EOH"> EOH</label>
+<label><input type="radio" name="q14" value="FPH"> FPH</label>
+<label><input type="radio" name="q14" value="DPG"> DPG</label>
 </div>
 
-  <!-- Navigation Buttons -->
-  <div style="margin-top:10px;">
-    <button id="prevBtn" onclick="prevQuestion()" style="display:none;">Previous</button>
-    <button id="nextBtn" onclick="nextQuestion()">Next</button>
-  </div>
+<!-- Q15 -->
+<div class="q">
+<b>Q15.</b> कौन सा अलग है?<br>
+<label><input type="radio" name="q15" value="सेब"> सेब</label>
+<label><input type="radio" name="q15" value="आम"> आम</label>
+<label><input type="radio" name="q15" value="केला"> केला</label>
+<label><input type="radio" name="q15" value="आलू"> आलू</label>
+</div>
+
+<!-- NAV -->
+<div>
+<button onclick="prevQuestion()">Previous</button>
+<button onclick="nextQuestion()">Next / Submit</button>
+</div>
+
 </div>
 
 <script>
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwX2q18UcM1EGaN2oaA-bW3dSypidBPDqrT9nVyR5rkz6K7fJLT_HnJqqidpR86-VY8/exec";
+const WEB_APP_URL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
 
-let currentQ = 0;
-let questions = document.querySelectorAll(".q");
+let qIndex=0;
+let qs=document.querySelectorAll(".q");
+let timeLeft=30*60;
 let timer;
-let timeLeft = 30*60; // 30 min
 
-// 🔒 Check if test already submitted
-if(localStorage.getItem("testSubmitted")==="yes"){
-  document.body.innerHTML =
-    "<h2 style='color:red;text-align:center;margin-top:50px;'>❌ Aap ye test pehle hi submit kar chuke ho</h2>";
-}
-
-// Start test
-function startTest() {
-  const name = document.getElementById("name").value.trim();
-  if(!name){
-    alert("Pehle naam likho");
-    return;
-  }
-  document.getElementById("nameSection").style.display = "none";
-  document.getElementById("testContent").style.display = "block";
-  showQuestion(0);
-  startTimer();
-}
-
-function showQuestion(index){
-  questions.forEach(q => q.style.display="none");
-  if(index < questions.length){
-    questions[index].style.display="block";
-    document.getElementById("prevBtn").style.display = index===0 ? "none" : "inline-block";
-    document.getElementById("nextBtn").innerText = index === questions.length -1 ? "Submit" : "Next";
-  } else {
-    submitAnswers();
-  }
-}
-
-function nextQuestion(){
-  if(currentQ === questions.length -1){
-    submitAnswers();
-  } else {
-    currentQ++;
-    showQuestion(currentQ);
-  }
-}
-
-function prevQuestion(){
-  if(currentQ > 0){
-    currentQ--;
-    showQuestion(currentQ);
-  }
-}
-
-function startTimer(){
-  timer = setInterval(() => {
-    const mins = Math.floor(timeLeft/60);
-    const secs = timeLeft % 60;
-    document.getElementById("countdown").innerText = `Time left: ${mins}m ${secs}s`;
-    if(timeLeft <= 0){
-      clearInterval(timer);
-      submitAnswers();
-    }
-    timeLeft--;
+function startTest(){
+  if(!name.value.trim()){ alert("Naam likho"); return;}
+  nameSection.style.display="none";
+  testContent.style.display="block";
+  showQ();
+  timer=setInterval(()=>{
+    countdown.innerText=`Time Left: ${Math.floor(timeLeft/60)}m ${timeLeft%60}s`;
+    if(timeLeft--<=0) submit();
   },1000);
 }
 
-function getAns(q){
-  return document.querySelector(`input[name="${q}"]:checked`).value;
+function showQ(){
+  qs.forEach(q=>q.style.display="none");
+  qs[qIndex].style.display="block";
 }
 
-function submitAnswers(){
+function nextQuestion(){
+  if(qIndex<qs.length-1){ qIndex++; showQ(); }
+  else submit();
+}
+
+function prevQuestion(){
+  if(qIndex>0){ qIndex--; showQ(); }
+}
+
+function getAns(q){
+  let a=document.querySelector(`input[name="${q}"]:checked`);
+  return a ? a.value : "";
+}
+
+function submit(){
   clearInterval(timer);
-  const name=document.getElementById("name").value.trim();
-  const data = {name:name};
-  questions.forEach((q,i)=>{
-    data[`q${i+1}`] = getAns(`q${i+1}`);
-  });
+  let data={name:name.value};
+  for(let i=1;i<=qs.length;i++){
+    data["q"+i]=getAns("q"+i);
+  }
 
   fetch(WEB_APP_URL,{
     method:"POST",
     body:JSON.stringify(data),
-    headers:{"Content-Type":"text/plain;charset=utf-8"},
     mode:"no-cors"
   });
 
   localStorage.setItem("testSubmitted","yes");
-
-  document.body.innerHTML =
-    "<h2 style='color:green;text-align:center;margin-top:50px;'>✅ Test Successfully Submitted</h2>";
+  document.body.innerHTML="<h2 style='text-align:center;color:green'>Test Submitted Successfully ✅</h2>";
 }
 </script>
+
 </body>
 </html>
