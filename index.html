@@ -97,6 +97,97 @@ button{
 <label><input type="radio" name="q5" value="3">3</label>
 </div>
 
+<div class="q">
+  <b>Q6.</b> √2 = ?<br>
+  <label><input type="radio" name="q6" value="1">1</label>
+  <label><input type="radio" name="q6" value="2">2</label>
+  <label><input type="radio" name="q6" value="3">3</label>
+  <label><input type="radio" name="q6" value="4">4</label>
+</div>
+
+<!-- Q7 -->
+<div class="q">
+  <b>Q7.</b> √3 = ?<br>
+  <label><input type="radio" name="q7" value="1">1</label>
+  <label><input type="radio" name="q7" value="2">2</label>
+  <label><input type="radio" name="q7" value="3">3</label>
+  <label><input type="radio" name="q7" value="4">4</label>
+</div>
+
+<!-- Q8 -->
+<div class="q">
+  <b>Q8.</b> √5 = ?<br>
+  <label><input type="radio" name="q8" value="1">1</label>
+  <label><input type="radio" name="q8" value="2">2</label>
+  <label><input type="radio" name="q8" value="3">3</label>
+  <label><input type="radio" name="q8" value="4">4</label>
+</div>
+
+<!-- Q9 -->
+<div class="q">
+  <b>Q9.</b> √10 = ?<br>
+  <label><input type="radio" name="q9" value="3">3</label>
+  <label><input type="radio" name="q9" value="4">4</label>
+  <label><input type="radio" name="q9" value="5">5</label>
+  <label><input type="radio" name="q9" value="6">6</label>
+</div>
+
+<!-- Q10 -->
+<div class="q">
+  <b>Q10.</b> √20 = ?<br>
+  <label><input type="radio" name="q10" value="4">4</label>
+  <label><input type="radio" name="q10" value="5">5</label>
+  <label><input type="radio" name="q10" value="6">6</label>
+  <label><input type="radio" name="q10" value="7">7</label>
+</div>
+
+  <!-- Q11 -->
+<div class="q">
+  <b>Q11.</b> Ram, Shyam ka पिता है। Shyam, Geeta का भाई है। Ram का Geeta से क्या संबंध है?<br>
+  <label><input type="radio" name="q11" value="पिता"> पिता</label>
+  <label><input type="radio" name="q11" value="चाचा"> चाचा</label>
+  <label><input type="radio" name="q11" value="मामा"> मामा</label>
+  <label><input type="radio" name="q11" value="भाई"> भाई</label>
+</div>
+
+<!-- Q12 -->
+<div class="q">
+  <b>Q12.</b> Ravi, Sita का भाई है। Sita, Sunita की माँ है। Ravi का Sunita से क्या संबंध है?<br>
+  <label><input type="radio" name="q12" value="मामा"> मामा</label>
+  <label><input type="radio" name="q12" value="चाचा"> चाचा</label>
+  <label><input type="radio" name="q12" value="भाई"> भाई</label>
+  <label><input type="radio" name="q12" value="पिता"> पिता</label>
+</div>
+
+<!-- Q13 -->
+<div class="q">
+  <b>Q13.</b> A, B की माँ है। B, C का पिता है। A का C से क्या संबंध है?<br>
+  <label><input type="radio" name="q13" value="दादी"> दादी</label>
+  <label><input type="radio" name="q13" value="माँ"> माँ</label>
+  <label><input type="radio" name="q13" value="चाची"> चाची</label>
+  <label><input type="radio" name="q13" value="मामी"> मामी</label>
+</div>
+
+<!-- Q14 -->
+<div class="q">
+  <b>Q14.</b> Ramesh, Sunil का पिता है। Sunil, Priya का भाई है। Priya का Ramesh से क्या संबंध है?<br>
+  <label><input type="radio" name="q14" value="माँ"> माँ</label>
+  <label><input type="radio" name="q14" value="पिता"> पिता</label>
+  <label><input type="radio" name="q14" value="चाचा"> चाचा</label>
+  <label><input type="radio" name="q14" value="मामा"> मामा</label>
+</div>
+
+<!-- Q15 -->
+<div class="q">
+  <b>Q15.</b> Amit, Rahul का भाई है। Rahul, Anjali की माँ है। Amit का Anjali से क्या संबंध है?<br>
+  <label><input type="radio" name="q15" value="चाचा"> चाचा</label>
+  <label><input type="radio" name="q15" value="मामा"> मामा</label>
+  <label><input type="radio" name="q15" value="भाई"> भाई</label>
+  <label><input type="radio" name="q15" value="पिता"> पिता</label>
+</div>
+
+
+
 <div>
 <button onclick="prevQuestion()">Previous</button>
 <button onclick="nextQuestion()">Next / Submit</button>
@@ -107,8 +198,7 @@ button{
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
-const WEB_APP_URL =
-"https://script.google.com/macros/s/AKfycbwX2q18UcM1EGaN2oaA-bW3dSypidBPDqrT9nVyR5rkz6K7fJLT_HnJqqidpR86-VY8/exec";
+const WEB_APP_URL ="https://script.google.com/macros/s/AKfycbwX2q18UcM1EGaN2oaA-bW3dSypidBPDqrT9nVyR5rkz6K7fJLT_HnJqqidpR86-VY8/exec";
 
 const nameInput = document.getElementById("name");
 const nameSection = document.getElementById("nameSection");
