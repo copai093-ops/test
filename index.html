@@ -89,7 +89,7 @@ select,input{
 
     <textarea id="typedText" placeholder="Typing start karo..." disabled></textarea>
 
-    <button onclick="submit()">Submit Test</button>
+    <button onclick="submitTest()">Submit Test</button>
 
   </div>
 </div>
@@ -107,13 +107,9 @@ const typedText = document.getElementById("typedText");
 
 let timeLeft = 0;
 let totalTime = 0;
-let timer;
+let timer = null;
 
-if(localStorage.getItem("typingSubmitted")==="yes"){
-  document.body.innerHTML =
-  "<h2 style='text-align:center;color:red'>Test already submitted ❌</h2>";
-}
-
+// START TEST
 window.startTest = function(){
   if(!nameInput.value.trim()){
     alert("Naam likho");
@@ -130,43 +126,50 @@ window.startTest = function(){
   document.getElementById("nameSection").style.display="none";
   testContent.style.display="block";
   typedText.disabled = false;
+  typedText.value = "";
   typedText.focus();
 
+  countdown.innerText =
+    `Time Left: ${Math.floor(timeLeft/60)}m ${timeLeft%60}s`;
+
   timer = setInterval(()=>{
+    timeLeft--;
     countdown.innerText =
       `Time Left: ${Math.floor(timeLeft/60)}m ${timeLeft%60}s`;
-    timeLeft--;
-    if(timeLeft < 0) submit();
+    if(timeLeft <= 0){
+      submitTest();
+    }
   },1000);
 }
 
-window.submit = function(){
-  clearInterval(timer);
+// SUBMIT TEST
+window.submitTest = function(){
+  if(timer) clearInterval(timer);
 
-  let words = typedText.value.trim().split(/\s+/).length;
-  let minutes = (totalTime - timeLeft) / 60;
-  let speed = Math.round(words / minutes);
+  let text = typedText.value.trim();
+  let words = text ? text.split(/\s+/).length : 0;
+  let minutesUsed = (totalTime - timeLeft) / 60;
+  if(minutesUsed <= 0) minutesUsed = 1/60;
 
-  let data = {
-    name: nameInput.value,
-    typedText: typedText.value,
-    time: totalTime/60 + " minutes",
-    speed: speed + " WPM"
-  };
+  let speed = Math.round(words / minutesUsed);
+
+  let formData = new FormData();
+  formData.append("name", nameInput.value);
+  formData.append("typedText", typedText.value);
+  formData.append("time", (totalTime/60) + " minutes");
+  formData.append("speed", speed + " WPM");
 
   fetch(WEB_APP_URL,{
     method:"POST",
-    body: JSON.stringify(data),
-    mode:"no-cors"
+    body: formData
   });
-
-  localStorage.setItem("typingSubmitted","yes");
 
   document.body.innerHTML =
   `<h2 style="text-align:center;color:green">
-   Test Submitted ✅<br>
-   Speed: ${speed} WPM
-   </h2>`;
+    Test Submitted Successfully ✅<br><br>
+    Name: ${nameInput.value}<br>
+    Speed: ${speed} WPM
+  </h2>`;
 }
 
 });
